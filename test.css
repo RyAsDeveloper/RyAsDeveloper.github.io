@@ -1,0 +1,33 @@
+body{
+	font-family:sans-serif;
+	margin: 0px;
+}
+
+.sidebar {
+	width: 20vw;
+	height: 100vh;
+
+	padding: 0px;
+
+	float:left;
+}
+
+.main {
+	width: 80vw;
+	height: 100vh;
+
+	padding: 0px;
+
+	float:left;
+}
+
+.view_map {
+	margin: 0px;
+	height: 100%;
+
+	padding: 0px;
+	
+}
+
+
+	
