@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>駐輪場マップ - つよつよゼミ</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache"> <!--キャッシュの無効化-->
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+  <link rel="stylesheet" href="test.css">
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!--Jqueryの読み込み-->
+
+  <link rel="stylesheet" href="./jquery.resizableColumns.css" />
+  <script src="js/jquery.resizableColumns.min.js"></script>
+
+
+  <script src="js/keyevent.js"></script>
+
+
+  <script src="js/csv.js"></script> <!--json形式 グローバル変数化-->
+
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="stoptime">
+        <div class="describe1">
+          止める時間
+        </div>
+        <input class="timeform" type="number" value="1" onkeyup="value = keyup(value); " max="99" />
+        <div class="describe2">
+          時間
+        </div>
+
+        <select class="priority">
+          <option value="fare">料金 > 距離</option>
+          <option value="distance">距離 > 料金</option>
+        </select>
+
+      </div>
+
+
+
+      <button type="button" class="search" value="clicked" onclick="table();">検索</button>
+
+      <table class="stoptable" border="1">
+        <thead>
+          <tr>
+            <th class="nameheader">駐輪場名</th>
+            <th class="fareheader">料金</th>
+            <th class="freeheader">無料時間</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      </table>
+      <script>
+      $(function(){
+          $("table").resizableColumns({
+          });
+      });
+
+      </script>
+
+    </div>
+
+    <div class="main">
+      <div id="view_map" class="view_map"></div>
+    </div>
+
+    <!--osm.jsでwindow.mapを宣言したため、それよりもあとにstart()を持ってこないとエラー(t is undefined.)-->
+
+    <script src="js/osm.js"></script>
+
+    <script>
+      start();
+      table();
+    </script>
+
+
+  
+
+
+
+
+  </body>
+</html>
