@@ -30,6 +30,34 @@ window.STOPS = [
         fare: 100,
         free: 1.5
         
+    },
+    {
+        name: "アップルパーク ソリッドスクエア駐輪場B",
+        location: {x:139.699229, y:35.535651},
+        unittime: 12,
+        fare: 100,
+        free: 1.5
+    },
+    {
+        name: "アップルパーク ソリッドスクエア駐輪場C",
+        location: {x:139.700794, y: 35.535077},
+        unittime: 12,
+        fare: 100,
+        free: 1.5
+    },
+    {
+        name: "カワサキデルタ南駐輪場",
+        location: {x: 139.6940722, y:35.5297247},
+        unittime: 10,
+        fare: 100,
+        free:2
+    },
+    {
+        name: "川崎駅西口自転車等第2駐車場",
+        location: {x:139.693561, y:35.5310983},
+        unittime: 1,
+        fare: 120,
+        free: 0
     }
 ];
 
