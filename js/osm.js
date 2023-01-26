@@ -1,6 +1,9 @@
 //緯度,経度,ズーム
 
 window.map = L.map('view_map').setView([35.5274631662438, 139.7148687433752], 14);
+
+window.map.zoomControl.setPosition('bottomright');
+
 // OpenStreetMap から地図画像を読み込む
 L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     minZoom: 14,
