@@ -18,7 +18,7 @@ function sidebar() {
         button.innerHTML = "＜"
         
         viewmap = document.getElementsByClassName("view_map_closed")[0];
-        viewmap.className = "view_map_opened";
+        viewmap.className = "view_map_opened leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom";
 
         side = document.getElementsByClassName("sidebar_default")[0];
         if (document.getElementsByClassName("sidebar_default").length == 0){
@@ -31,7 +31,7 @@ function sidebar() {
         button.innerHTML = "＞"
         
         viewmap = document.getElementsByClassName("view_map_opened")[0];
-        viewmap.className = "view_map_closed";
+        viewmap.className = "view_map_closed leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom";
 
         side = document.getElementsByClassName("sidebar_opened")[0];
 
