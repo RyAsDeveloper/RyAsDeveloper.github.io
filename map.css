@@ -10,37 +10,67 @@ body{
 
 	width: 100%;
 	height: 100%;
+	
 }
 
-.sidebar {
+.sidebar_closed, .sidebar_opened, .sidebar_default { /*sidebar_defaultは無いと最初からアニメーションしてしまうから*/
 	/*下二行でstoptimeとstoptableを縦並びにする処理。*/
 	display: flex;
 	flex-flow: column;
 
-	width: 20%;
+	width: 500px;
 	height: 100%;
 
 	padding: 0px;
 
 	/*これは、sidebarとview_map自体を横並びにする処理*/
 	float:left;
+
+	position: absolute;
+
+	z-index: 3;
+
+	background-color: white;
+
+
+	overflow-y: scroll;
+
+
 }
 
-.main {
-	width: 80%;
-	height: 100%;
-
-
-	float:left;
+.sidebar_default {
+	left: -500px;
 }
 
-.view_map {
-
-	width: 100%;
-	height: 100%;
-
-	
+.sidebar_closed {
+	animation: close 0.2s forwards;
 }
+
+.sidebar_opened{
+	animation: open 0.2s forwards;
+}
+
+
+@keyframes close {
+	0% {
+	transform: translateX(0px);
+	}
+  
+	100% {
+	transform: translateX(-500px);
+	}
+}
+
+@keyframes open{
+	0% {
+		transform: translateX(-500px);
+		}
+	  
+		100% {
+		transform: translateX(0px);
+		}
+}
+
 
 .stoptime {
 
@@ -103,6 +133,51 @@ body{
 
 .freeheader {
 	width: 20%;
+}
+
+.sidebar-toggle_closed, .sidebar-toggle_opened {
+	width: 25px;
+	height: 75px;
+
+	position: absolute;
+
+	top: 50vh;
+
+	z-index: 2;
+}
+
+
+
+
+.main { /*closedがサイドメニューがないとき(全面。openedがサイドメニューがあるとき(少し暗くする。*/
+	position: absolute;
+	top:0px;
+	left:0px;
+
+	width: 100%;
+	height: 100%;
+
+
+	float:left;
+
+	background-color: black;
+
+	z-index: 1;
+}
+
+
+
+.view_map_closed, .view_map_opened {
+	width: 100%;
+	height: 100%;
+}
+
+.view_map_closed {
+	opacity: 1.0;
+}
+
+.view_map_opened {
+	opacity: 0.5;
 }
 
 

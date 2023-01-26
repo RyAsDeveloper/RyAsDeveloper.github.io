@@ -41,7 +41,7 @@
 
   </head>
   <body>
-    <div class="sidebar">
+    <div class="sidebar_default">
       <div class="stoptime">
         <div class="describe1">
           止める時間
@@ -81,14 +81,14 @@
 
       </script>
       
-      <button class="sidebar-toggle"><i class="fa fa-plus icon"></i></button> <!--サイドバーの開閉用-->
+      
 
     </div>
 
-
+    <button class="sidebar-toggle_closed">></button> <!--サイドバーの開閉用-->
 
     <div class="main">
-      <div id="view_map" class="view_map"></div>
+      <div id="view_map" class="view_map_closed"></div>
     </div>
 
     <!--osm.jsでwindow.mapを宣言したため、それよりもあとにstart()を持ってこないとエラー(t is undefined.)-->
