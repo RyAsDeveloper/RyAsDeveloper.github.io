@@ -136,8 +136,8 @@ body{
 }
 
 .sidebar-toggle_closed, .sidebar-toggle_opened, .sidebar-toggle_default {
-	width: 25px;
-	height: 75px;
+	width: 2vw;
+	height: 6vw; /*縦横比揃えるためにわざとvwをどっちも使っている。*/
 
 	position: absolute;
 
