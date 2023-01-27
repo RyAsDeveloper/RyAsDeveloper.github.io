@@ -273,7 +273,7 @@ body{
 	
 		position: absolute;
 	
-		top: 50vh - 10vw;
+		top: calc(50vh - 10vw);
 	
 		font-family:Arial, Helvetica, sans-serif;
 	
