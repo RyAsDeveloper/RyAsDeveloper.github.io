@@ -80,9 +80,9 @@ body{
 }
 
 .logo {
-	width: 150px;
+	width: 40%;
 	height: auto;
-	padding-top: 2%;
+	padding-top: 3%;
 	padding-left: 2%;
 
 	float:left;
@@ -93,7 +93,8 @@ body{
 .logo_map {
 	display:inline-block;
 
-	
+	max-width: 60%;
+
 
 
 }
