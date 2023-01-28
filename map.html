@@ -45,6 +45,22 @@
 
   <script src="js/csv.js"></script> <!--json形式 グローバル変数化-->
 
+  <!--ステータスバーを除くサイズを取得
+  https://kasumiblog.org/203-2/
+  を参照
+-->
+<script>
+  $(document).ready(function(){
+    var hSize = $(window).height();
+    $('.mainvisual').height(hSize); // アドレスバーを除いたサイズを付与
+    });
+    $(window).resize(function(){ // ページをリサイズした時の処理
+    var hSize = $(window).height();
+    $('.mainvisual').height(hSize); // アドレスバーを除いたサイズを付与
+    });
+  </script>
+
+
   </head>
   <body>
     <div class="sidebar_default">
