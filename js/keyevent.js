@@ -11,6 +11,8 @@ function keyup(val){
 
 /*サイドパネルの開閉のために、各タグにクラスを付け替えする処理*/
 function sidebar() {
+
+
     button = event.target;
 
     if (button.className.includes("closed") || button.className.includes("default")){ //ボタンが閉じているならば(もしくは呼び出しが一回目(=default)であれば)
@@ -37,4 +39,6 @@ function sidebar() {
 
         side.className = "sidebar_closed"
     }
+
+
 } 
