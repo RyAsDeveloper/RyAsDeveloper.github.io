@@ -7,7 +7,7 @@ window.map.zoomControl.setPosition('bottomright');
 // OpenStreetMap から地図画像を読み込む
 L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     minZoom: 14,
-    maxZoom: 18,
+    maxZoom: 19,
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
 }).addTo(map);
 
