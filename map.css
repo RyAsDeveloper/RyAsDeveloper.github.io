@@ -72,6 +72,28 @@ body{
 		}
 }
 
+.header {
+	width: 100%;
+	height: 7%;
+
+	border-bottom: solid 1px #dadce0
+}
+
+.logo {
+	width: 25%;
+	height: auto;
+	padding-top: 2%;
+	padding-left: 2%;
+
+	float:left;
+
+	
+}
+
+.logo_map {
+	margin-left: 20%;
+}
+
 
 .stoptime {
 
