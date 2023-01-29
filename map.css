@@ -80,10 +80,12 @@ body{
 }
 
 .logo {
-	width: 40%;
-	height: auto;
-	padding-top: 4%;
-	padding-left: 2%;
+	height: 80%;
+	width: auto;
+
+	margin-top: 1%;
+	margin-bottom: 1%;
+	margin-left: 1%;
 
 	float:left;
 
@@ -93,11 +95,14 @@ body{
 .logo_map {
 	display:inline-block;
 
+	margin-top: 5%;
 	max-width: 60%;
 
 
 
 }
+
+
 
 
 
@@ -117,6 +122,15 @@ body{
 	margin-right: 10px;
 
 	float: right;
+}
+
+.form {
+	float: right;
+
+	position: relative;
+
+	top: 0px;
+	right: 5px;
 }
 
 .timeform {
@@ -171,6 +185,14 @@ body{
 
 .freeheader {
 	width: 20%;
+}
+
+.note {
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	font-size: 95%;
+
+	font-weight: bold;
 }
 
 .sidebar-toggle_closed, .sidebar-toggle_opened, .sidebar-toggle_default {
