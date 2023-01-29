@@ -188,6 +188,12 @@ body{
 	margin-bottom:0;
 }
 
+.inquiry {
+	display: inline-block;
+	margin: 0;
+	margin-left : 2.5%;
+}
+
 .note1 {
 	margin: 0; /*一回全部0にセット*/
 	margin-top: 2.5%;
@@ -222,6 +228,12 @@ body{
 .ifmobile1 {
 	display: none; /*モバイルだと「連絡フォーム」が改行されてしまうため。*/
 }
+
+.ifmobile2 {
+	display: none;
+}
+
+
 
 .sidebar-toggle_closed, .sidebar-toggle_opened, .sidebar-toggle_default {
 	width: 25px;
@@ -359,6 +371,10 @@ body{
 	}
 
 	.ifmobile1 {
+		display: block;
+	}
+
+	.ifmobile2 {
 		display: block;
 	}
 
