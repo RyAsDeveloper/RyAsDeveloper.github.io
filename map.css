@@ -74,7 +74,7 @@ body{
 
 .header {
 	width: 100%;
-	height: 80px;
+	height: 8%;
 
 	border-bottom: solid 1px #dadce0
 }
@@ -83,7 +83,7 @@ body{
 	height: 80%;
 	width: auto;
 
-	margin-top: 1%;
+	margin-top: 2%;
 	margin-bottom: 1%;
 	margin-left: 1%;
 
@@ -119,19 +119,12 @@ body{
 .linktoguide {
 	position: static;
 
-	margin-right: 10px;
+	margin-right: 20px;
 
 	float: right;
 }
 
-.form {
-	float: right;
 
-	position: relative;
-
-	top: 0px;
-	right: 5px;
-}
 
 .timeform {
 	margin-left: 10px;
@@ -187,12 +180,47 @@ body{
 	width: 20%;
 }
 
-.note {
+.form {
+	display:inline-block;
+	margin-top: 2.5%;
 	margin-left: 2.5%;
-	margin-right: 2.5%;
+	margin-right: 0;
+	margin-bottom:0;
+}
+
+.note1 {
+	margin: 0; /*一回全部0にセット*/
+	margin-top: 2.5%;
+	margin-left: 2.5%;
+
 	font-size: 95%;
 
 	font-weight: bold;
+}
+
+.note2 {
+	margin: 0; /*一回全部0にセット*/
+	margin-top: 2.5%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+
+	font-size: 95%;
+
+	font-weight: bold;
+}
+
+.trademark {
+	margin: 0; /*一回全部0にセット*/
+	margin-top: 5%;
+	margin-bottom: 2.5%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+
+	font: size 12pt;
+}
+
+.ifmobile1 {
+	display: none; /*モバイルだと「連絡フォーム」が改行されてしまうため。*/
 }
 
 .sidebar-toggle_closed, .sidebar-toggle_opened, .sidebar-toggle_default {
@@ -328,6 +356,10 @@ body{
 			100% {
 			transform: translateX(0px);
 			}
+	}
+
+	.ifmobile1 {
+		display: block;
 	}
 
 	/*　この位置に記述する　*/
