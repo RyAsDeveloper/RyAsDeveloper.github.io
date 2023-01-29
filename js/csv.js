@@ -3,12 +3,13 @@
 
 window.STOPS = [
     { 
-        name: "ラゾーナ川崎プラザ駅前地下駐輪場",
+        name: "アップルパーク PIA京急川崎店駐輪場",
         location: {x: 139.699943, y: 35.532342},
+        
         unittime: 1, 
         fare: 100,
-        free: 2,
-        describe: ""
+        free: 0,
+        describe: "",
     },
     {
         name: "エコステーション21 京急川崎西口駐輪場A",
@@ -19,9 +20,17 @@ window.STOPS = [
         describe: ""
     },
     {
-        name: "エコステーション21 京急川崎西口駐輪場B",
+        name: "エコステーション21 京急川崎西口駐輪場B(高いラック)",
         location: {x:139.700525, y:35.53358},
         unittime: 8,
+        fare: 100,
+        free: 1,
+        describe: "高いラックに限り、8時間100円。低いラックは5時間100円"
+    },
+    {
+        name: "エコステーション21 京急川崎西口駐輪場B(低いラック)",
+        location: {x:139.700525, y:35.53358},
+        unittime: 5,
         fare: 100,
         free: 1,
         describe: "高いラックに限り、8時間100円。低いラックは5時間100円"
@@ -49,31 +58,42 @@ window.STOPS = [
         unittime: 12,
         fare: 100,
         free: 1.5,
-        describe: ""
+        describe: "",
+        url: "https://goo.gl/maps/NbaFE7s2VbT5HTQb8"
     },
     {
         name: "カワサキデルタ南駐輪場",
         location: {x: 139.6940722, y:35.5297247},
-        unittime: 10,
+        unittime: 12,
         fare: 100,
         free:2,
-        describe: ""
+        describe: "",
+        url: "https://goo.gl/maps/Pp2AGWyrv1QFk7656"
     },
     {
-        name: "川崎駅西口自転車等第2駐車場",
+        name: "川崎駅西口自転車等第2駐車場 2F",
         location: {x:139.693561, y:35.5310983},
-        unittime: 1,
+        unittime: 24,
         fare: 120,
         free: 0,
         describe: ""
     },
     {
-        name: "川崎西口パーキング自転車駐輪場",
+        name: "川崎駅西口自転車等第2駐車場 1F",
+        location: {x:139.693561, y:35.5310983},
+        unittime: 24,
+        fare: 150,
+        free: 0,
+        describe: ""
+    },
+    {
+        name: "川崎西口パーキング自転車駐輪場 - 三井のリパーク",
         location: {x: 139.6935441, y:35.5319657},
         unittime: 10,
         fare: 100,
         free: 0,
-        describe: "宝くじ売り場の近くの路地にあります"
+        describe: "宝くじ売り場の近くの路地にあります",
+        url: "https://goo.gl/maps/Ssdm62CBxc5zWYy8A"
     },
     {
         name: "ラゾーナ川崎北駐輪場",
@@ -81,7 +101,8 @@ window.STOPS = [
         unittime: 4,
         fare: 100,
         free: 4,
-        describe: ""
+        describe: "",
+        url: "https://goo.gl/maps/dL7imyvAv71AKR5N9"
     },
     {
         name: "ラゾーナ川崎東駐輪場",
@@ -97,7 +118,8 @@ window.STOPS = [
         unittime: 4,
         fare: 100,
         free: 4,
-        describe: ""
+        describe: "",
+        url: "https://goo.gl/maps/NF5cnQczhYh174QV8"
     },
     /*
     {
@@ -111,7 +133,8 @@ window.STOPS = [
         unittime: 24,
         fare: 170,
         free: 0,
-        describe: ""
+        describe: "",
+        url: "https://goo.gl/maps/FyfGq3XEHkA1R3GaA"
     }
 
 ];
@@ -139,20 +162,63 @@ function marker(n){
     var decimal = stop.free - Math.floor(stop.free); // 小数点以下を取得
 
     var marker;
+
+    /*
+    最初に1.0時間か1.5時間かの判断(小数点以下があったら○分にしなきゃいけないから)をし、
+    その後に個stopに"url"というキーが存在するかで分岐する。
+    */
+
     if (decimal == 0){
-        marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
-            popup
-               .setLatLng(e.latlng)
-               .setContent(`${stop.name} <br>料金:${stop.fare}円/${stop.unittime}時間 <br> 無料:${stop.free}時間 <br> ${stop.describe}`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
-            .openOn(window.map);
-      });
+        if (!("url" in stop)){
+            marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
+                popup
+                .setLatLng(e.latlng)
+                .setContent(`${stop.name} <br>
+                                料金:${stop.fare}円/${stop.unittime}時間 <br> 
+                                無料:${stop.free}時間 <br> 
+                                ${stop.describe} <br>
+                                <a target="_blank" rel="noopener noreferrer" href="https://maps.google.com/maps?q=&layer=c&cbll=${stop.location.y}, ${stop.location.x}&cbp=11,0,0,0,0">Googleストリートビューで見る</a>`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
+                                // target="_blank"の他に rel="noopener noreferrer"を指定することで、安全性を保証。参考：https://web-camp.io/magazine/archives/82442    
+                .openOn(window.map);
+            });
+        } else {
+            marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
+                popup
+                .setLatLng(e.latlng)
+                .setContent(`${stop.name} <br>
+                                料金:${stop.fare}円/${stop.unittime}時間 <br> 
+                                無料:${stop.free}時間 <br> 
+                                ${stop.describe} <br>
+                                <a target="_blank" rel="noopener noreferrer" href="${stop.url}">Googleストリートビューで見る</a>`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
+                                // target="_blank"の他に rel="noopener noreferrer"を指定することで、安全性を保証。参考：https://web-camp.io/magazine/archives/82442    
+                .openOn(window.map);
+            });
+        }
     } else { // 無料時間が1.5時間とかの場合、1時間30分にする。
-        marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
-            popup
-               .setLatLng(e.latlng)
-               .setContent(`${stop.name} <br>料金:${stop.fare}円/${stop.unittime}時間 <br> 無料:${Math.floor(stop.free)}時間${decimal * 60}分 <br> ${stop.describe}`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
-            .openOn(window.map);
-      });
+        if (!("url" in stop)){
+            marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
+                popup
+                .setLatLng(e.latlng)
+                .setContent(`${stop.name} <br>
+                                料金:${stop.fare}円/${stop.unittime}時間 <br> 
+                                無料:${Math.floor(stop.free)}時間${decimal * 60}分 <br> 
+                                ${stop.describe} <br>
+                                <a target="_blank" rel="noopener noreferrer" href="https://maps.google.com/maps?q=&layer=c&cbll=${stop.location.y}, ${stop.location.x}&cbp=11,0,0,0,0">Googleストリートビューで見る</a>`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
+                .openOn(window.map);
+            });
+        } else {
+            marker = L.marker([stop.location.y, stop.location.x]).addTo(window.map).on('click', function (e) {
+                popup
+                .setLatLng(e.latlng)
+                .setContent(`${stop.name} <br>
+                                料金:${stop.fare}円/${stop.unittime}時間 <br> 
+                                無料:${Math.floor(stop.free)}時間${decimal * 60}分 <br> 
+                                ${stop.describe} <br>
+                                <a target="_blank" rel="noopener noreferrer" href="${stop.url}">Googleストリートビューで見る</a>`) // Back quoteじゃないと変数が展開されない。また、ここでの改行は「\n」ではなく、「<br>」
+                .openOn(window.map);
+            }); 
+        }
+        
     }
 
     window.markerlayer.push({marker: marker, x: stop.location.x, y: stop.location.y});
