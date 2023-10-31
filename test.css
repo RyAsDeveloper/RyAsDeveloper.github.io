@@ -1,0 +1,109 @@
+html {
+	
+	width: 100vw;
+	height: 100vh;
+}
+
+body{
+	font-family:sans-serif;
+	margin: 0px;
+
+	width: 100%;
+	height: 100%;
+}
+
+.sidebar {
+	/*下二行でstoptimeとstoptableを縦並びにする処理。*/
+	display: flex;
+	flex-flow: column;
+
+	width: 20%;
+	height: 100%;
+
+	padding: 0px;
+
+	/*これは、sidebarとview_map自体を横並びにする処理*/
+	float:left;
+}
+
+.main {
+	width: 80%;
+	height: 100%;
+
+
+	float:left;
+}
+
+.view_map {
+
+	width: 100%;
+	height: 100%;
+
+	
+}
+
+.stoptime {
+
+}
+
+.describe1 {
+	margin-left: 10px;
+	margin-top: 10px;	
+}
+
+.timeform {
+	margin-left: 10px;
+	margin-top: 5px;
+
+	width: 20%;
+
+	float: left;
+}
+
+.describe2 {
+	float: left;
+
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.priority {
+	margin-top: 3px;
+	margin-left: 10px;
+	width: 60%;
+}
+
+.search {
+	float: right;
+
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 4px;
+
+
+	
+}
+
+.stoptable {
+	margin-top: 10px;
+
+	margin-left: 2%;
+	margin-right: 2%;
+
+	width: 96%;
+}
+
+.nameheader {
+	width: 60%;
+}
+
+.fareheader {
+	width: 20%;
+}
+
+.freeheader {
+	width: 20%;
+}
+
+
+	

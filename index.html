@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+	
+    <meta name="application-name" content="つよつよマップ"/>
+    <meta name="msapplication-square70x70logo" content="s70x70.png"/>
+    <meta name="msapplication-square150x150logo" content="s150x150.png"/>
+    <meta name="msapplication-square310x310logo" content="s310x310.png"/>
+    <meta name="msapplication-TileColor" content="#0000ff"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-79NWN836KL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-79NWN836KL');
+    </script>
+
+
+    <title>つよつよマップ</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache"> <!--キャッシュの無効化-->
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+  <link rel="stylesheet" href="map.css">
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!--Jqueryの読み込み-->
+
+  <link rel="stylesheet" href="./jquery.resizableColumns.css" />
+  <script src="js/jquery.resizableColumns.min.js"></script>
+
+	<script src="js/leaflet.sprite.js"></script>
+
+
+
+  <script src="js/keyevent.js"></script>
+
+
+  <script src="js/csv.js"></script> <!--json形式 グローバル変数化-->
+
+  <!--ステータスバーを除くサイズを取得
+  https://kasumiblog.org/203-2/
+  を参照
+-->
+<script>
+  $(document).ready(function(){
+    var hSize = $(window).height();
+    $('.mainvisual').height(hSize); // アドレスバーを除いたサイズを付与
+    });
+    $(window).resize(function(){ // ページをリサイズした時の処理
+    var hSize = $(window).height();
+    $('.mainvisual').height(hSize); // アドレスバーを除いたサイズを付与
+    });
+  </script>
+
+  <meta name="google-site-verification" content="TiwwjrSsqR6MJBO-R_XBkLAovHJzVhCNS5V04jKUoyw" />
+  </head>
+  <body>
+    <div class="sidebar_default">
+      <header class="header">
+        <img src="logo.png" height="90%"  alt="つよつよゼミ" class="logo">
+
+        <!--
+          <h2 class="logo_map">　駐輪場マップ</h2>
+        -->
+
+      </header>
+
+      
+
+
+      <div class="stoptime">
+        <div class="describe1">
+          止める時間
+          <a href="./guide.pdf" class="linktoguide">使い方ガイド</a>
+          
+        </div>
+
+        <input class="timeform" type="number" value="1" onkeyup="value = keyup(value); " max="99" />
+        <div class="describe2">
+          時間
+        </div>
+<!--
+        <select class="priority">
+          <option value="fare">料金 > 距離</option>
+          <option value="distance">距離 > 料金</option>
+        </select>
+      -->
+
+      </div>
+
+
+
+
+      <button type="button" class="search" value="clicked" onclick="table();">検索</button>
+
+      <table class="stoptable" border="1">
+        <thead>
+          <tr>
+            <th class="nameheader">駐輪場名</th>
+            <th class="fareheader">料金</th>
+            <th class="freeheader">無料時間</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      </table>
+      <script>
+      $(function(){
+          $("table").resizableColumns({
+          });
+      });
+
+      </script>
+
+
+      <p class="form">
+        掲載されていない駐輪場を見つけたら　　：<br class="ifmobile1"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdoZwV4V-8QTTPXOnQLpiegPMSsZiuANv1bHGwgsBCZMafIyA/viewform?usp=sf_link">連絡フォーム</a>
+      </p>
+
+      <p class="inquiry">
+        バグ報告、機能の追加要望等ありましたら：<br class="ifmobile2"><a href="https://forms.gle/Fk7qC8q7dzhzKPt46">報告フォーム</a>
+      </p>
+
+      
+
+      <p class="note1">駐輪場の値段は正しくない可能性があります。<br>正しい値段は駐輪場の看板、もしくは公式サイトをご参照ください。</p>
+      <p class="note2">ストリートビューの向きが駐輪場を向いていない可能性があります。</p>
+
+      <p class="trademark">© 2017 Google LLC All rights reserved. Google および Google ロゴは Google LLC の登録商標です。<br>
+                          Street View™ 画像 及び Google フォーム は、Google LLC の商標または登録商標です。</p>
+      
+      
+
+    </div>
+
+    <button class="sidebar-toggle_default" onclick="sidebar()">
+      ＞
+    </button> <!--サイドバーの開閉用-->
+
+    <div class="main">
+      <div id="view_map" class="view_map_closed"></div>
+    </div>
+
+    <!--osm.jsでwindow.mapを宣言したため、それよりもあとにstart()を持ってこないとエラー(t is undefined.)-->
+
+    <script src="js/osm.js"></script>
+
+    <script>
+      start();
+      table();
+    </script>
+
+
+  
+
+
+
+
+  </body>
+</html>
